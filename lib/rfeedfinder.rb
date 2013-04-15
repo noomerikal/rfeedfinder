@@ -474,21 +474,7 @@ class Rfeedfinder
 
   def self.isAValidURL?(url_to_check)
     return false if url_to_check == nil
-
-    # The protocols that we allow are the following
-    protocol_whitelist = ["http", "https"]
-    # I guess we could have included some more, but that doesn't really
-    # make sense anyway as these are the ones that should be used.
-    # We'll see if the need arises and then add more later if needed.
-
-    re = Regexp.new("(#{protocol_whitelist.join('|')}):" + \
-      "\/\/([[:alpha:][:digit:].]{2,})([.]{1})([[:alpha:]]{2,4})(\/)")
-
-    # For the sake of the regular expression check we add a back slash
-    # at the end of the URL
-    url_to_check += "/"
-    return true unless (re =~ url_to_check) == nil
-    false
+    return true
   end
 
 end
